@@ -10,6 +10,14 @@ module Integrity
     class Email < Notifier::Base
       attr_reader :to, :from
 
+      def self.notify(build, config)
+        if build.successful? && !build.fixed?
+          Integrity.logger.info("Skiped notifying of build #{build.sha1_short} with #{to_s}")
+        else
+          super
+        end
+      end
+
       def self.to_haml
         @haml ||= File.read(File.dirname(__FILE__) + "/email.haml")
       end

@@ -214,6 +214,8 @@ a {
           color: #337022; }
         #content #projects li a.failed {
           color: #ff1100; }
+        #content #projects li a.fixed {
+          color: #ddff88; }
         #content #projects li a.building {
           color: #777777; }
       #content #projects li .meta {
@@ -241,6 +243,17 @@ a {
       color: #77b466; }
     #content #projects li.success a:hover, #content #previous_builds li.success a:hover {
       background-color: #ddffcc; }
+
+  #content #projects li.fixed a, #content #previous_builds li.fixed a {
+    background-color: #bbf855;
+    border-color: #99d644;
+    color: #337011; }
+    #content #projects li.fixed a .attribution, #content #previous_builds li.fixed a .attribution {
+      color: #77b433; }
+    #content #projects li.fixed a:hover, #content #previous_builds li.fixed a:hover {
+      background-color: #ddff99; }
+
+
   #content #projects li.failed a, #content #previous_builds li.failed a {
     background-color: #ffbbaa;
     border-color: #dd9988;
@@ -279,6 +292,18 @@ a {
       #content #build.success .meta a:hover, #content #build.success .github a a:hover, #content #last_build.success .meta a:hover, #content #last_build.success .github a a:hover {
         color: #bbf8aa;
         background-color: #337022; }
+
+    #content #build.fixed h1, #content #build.fixed blockquote, #content #last_build.fixed h1, #content #last_build.fixed blockquote {
+      background-color: #bbf855;
+      border-color: #99d644 #ccff60 #ccff60 #99d644; }
+    #content #build.fixed h1, #content #last_build.fixed h1 {
+      color: #337011; }
+    #content #build.fixed .meta, #content #build.success .github a, #content #last_build.fixed .meta, #content #last_build.success .fixed a {
+      color: #77b433; }
+      #content #build.fixed .meta a:hover, #content #build.fixed .github a a:hover, #content #last_build.fixed .meta a:hover, #content #last_build.fixed .github a a:hover {
+        color: #bbf855;
+        background-color: #337011; }
+
     #content #build.failed h1, #content #build.failed blockquote, #content #last_build.failed h1, #content #last_build.failed blockquote {
       background-color: #ffbbaa;
       border-color: #dd9988 #ffccbb #ffccbb #dd9988; }

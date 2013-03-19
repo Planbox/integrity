@@ -4,6 +4,7 @@ module Integrity
 
     HUMAN_STATUS = {
       :success  => "Built %s successfully",
+      :fixed    => "%s has been fixed",
       :failed   => "Built %s and failed",
       :pending  => "%s hasn't been built yet",
       :building => "%s is building"
@@ -34,6 +35,10 @@ module Integrity
       end
     end
 
+    def previous_build
+      @previous_build ||= Build.first(:order => [:id.desc], :id.lt => id, :project_id => project_id)
+    end
+
     def run
       Integrity.config.builder.enqueue(self)
     end
@@ -44,6 +49,10 @@ module Integrity
 
     def notify
       project.enabled_notifiers.each { |n| n.notify(self) }
+    end
+
+    def fixed?
+      successful? && previous_build && previous_build.failed?
     end
 
     def successful?
@@ -132,6 +141,7 @@ module Integrity
       case
       when building?   then :building
       when pending?    then :pending
+      when fixed?      then :fixed
       when successful? then :success
       when failed?     then :failed
       end
