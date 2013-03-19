@@ -41,7 +41,7 @@ module Integrity
       repository = @payload["repository"]
 
       if repository["private"]
-        "git@github.com:#{URI(repository["url"]).path[1..-1]}"
+        "#{URI(repository["url"]).path[1..-1]}"
       else
         uri = URI(repository["url"])
         uri.scheme = "git"
